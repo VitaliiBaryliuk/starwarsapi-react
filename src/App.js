@@ -43,7 +43,7 @@ class App extends Component {
                 <Route exact path="/" component={HomePage} />
                 <Route exact path={`/:category(${ allowedCategories.join('|') })`} component={DataTable} />
                 <Route path={`/:category(${ allowedCategories.join('|') })/:id([0-9]+)`}  component={Table} />
-                <Route render={() => <h3>Page not found</h3>} />
+                {/* <Route render={() => <h3>Page not found</h3>} /> */}
               </Switch>
             </div>
         </div>
