@@ -1,1 +1,1 @@
-[GH-pages](https://vitaliybaryliuk.github.io/).
+[GH-pages](https://vitaliybaryliuk.github.io/starwarsapi-react/).
