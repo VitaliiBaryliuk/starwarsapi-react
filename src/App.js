@@ -6,7 +6,6 @@ import './App.css';
 import './index.css'
 import './index.scss'
 import HomePage from './components/HomePage'
-import List from './components/List'
 import Table from './components/Table'
 import {ApiUrlContext} from './ApiUrlContext'
 import DataTable from './components/DataTable/DataTable'

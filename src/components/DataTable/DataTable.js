@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 import SwApi from '../../api/SwApi'
@@ -65,17 +65,3 @@ export default class DataTable extends React.Component {
     )
   }
 }
-
-// const NavItem = ({name, url}) => {
-//   const id = url.match(/[0-9]+/)
-
-//   return(
-//         <Fragment>
-//           <li className="list__item">
-//             <NavLink to={`/people/${id}`}>
-//                 {name}
-//             </NavLink>
-//           </li>
-//         </Fragment>
-//   )
-// }
