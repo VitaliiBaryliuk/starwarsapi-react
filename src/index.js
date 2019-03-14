@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 
 
 ReactDOM.render(
-<BrowserRouter>
+<BrowserRouter basename={process.env.ROOT_PATH}>
   <App />
 </BrowserRouter>
 , document.getElementById('root'));
