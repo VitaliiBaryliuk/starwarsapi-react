@@ -15,8 +15,6 @@ const SwApi = {
   },
 
   getApiDataItem: async (category, id) => {
-console.log(BASE_URL + category + '/' + id)
-
     const responce = await (await fetch(BASE_URL + category + '/' + id)).json()
     
     return responce;

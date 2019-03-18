@@ -13,6 +13,8 @@
 .container-fluid {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .header {
@@ -52,7 +54,6 @@
   }
 }
 
-
 .data-table {
   width: 75%; 
 
@@ -63,6 +64,7 @@
     text-decoration: none;
     margin-bottom: 5px;  
     color: greenyellow; 
+    cursor: pointer;
   }
   
   &__item {
@@ -74,7 +76,7 @@
   }
 
   &__item>a  {
-    color: #EED256;
+    color: #008cff;
     text-decoration: none;
   }
 
@@ -85,6 +87,37 @@
 
 .data-table>tbody {
   width: 100%;
+}
+
+.pagination {
+  margin-top: 25px;
+
+  &__button {
+    margin: 5px;
+    padding: 5px;
+    background-color: greenyellow;
+    color: #008cff;
+    font-family: STARWARS 
+  }
+}
+
+.filters {
+  margin-bottom: 50px; 
+
+  &__search-input {
+    width: 250px;
+    height: 30px;
+    padding: 3px;
+    font-size: 18px;
+    background-color: #090401;
+    border: 3px solid #EED256; 
+    border-radius: 10px;
+    color: #EED256;
+  }
+
+  &__search-input:focus {
+    outline: none;
+  }
 }
 
 .table {

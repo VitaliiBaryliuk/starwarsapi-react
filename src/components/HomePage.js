@@ -1,18 +1,13 @@
 import React, {Component} from 'react'
 
-import { Link } from 'react-router-dom';
-
-import {ApiUrlContext} from './../ApiUrlContext'
+import {Link} from 'react-router-dom';
 import SwApi from '../api/SwApi'
-
  
 export default class HomePage extends Component {
   state = {
     categories: []
   }
 
-  static contextType = ApiUrlContext
-  
   async componentDidMount() {
     const categories = await SwApi.getRootApiData()
     
@@ -26,20 +21,16 @@ export default class HomePage extends Component {
     const { categories } = this.state 
     
     return(
-      <ApiUrlContext.Consumer>
-        {({setCurrentApiLink}) => 
-          <div className="home-page">
-          {!categories.toString() ? <div className="lds-ring"><div></div><div></div><div></div><div></div></div> :
-          Object.keys(categories).map(category =>
-            <div className='home-page__category-item' key={category}>
-              <Link to={`/${category}`} onClick={() => setCurrentApiLink(categories[category])}>
-                {category}
-              </Link>
-            </div>  
-          )}
-        </div> 
-      }
-      </ApiUrlContext.Consumer>
+        <div className="home-page">
+        {!categories.toString() ? <div className="lds-ring"><div></div><div></div><div></div><div></div></div> :
+        Object.keys(categories).map(category =>
+          <div className='home-page__category-item' key={category}>
+            <Link to={`/${category}`}>
+              {category}
+            </Link>
+          </div>  
+        )}
+      </div> 
     )
   }
 }

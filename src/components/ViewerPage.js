@@ -1,20 +1,16 @@
 import React, {Fragment} from 'react'
 
-import {ApiUrlContext} from './../ApiUrlContext'
 import SwApi from '../api/SwApi'
 
-export default class Table extends React.Component {
+export default class ViewerPage extends React.Component {
   state = {
     item: [],
     titles: [],
   }
-
-  static contextType = ApiUrlContext;
-
+  
   async componentDidMount() {
     const category = this.props.match.params.category;
     const id = this.props.match.params.id;
-
     const item = await SwApi.getApiDataItem(category, id)
 
     this.setState({
@@ -32,8 +28,9 @@ export default class Table extends React.Component {
           <table className="table">
             <tbody>
               {titles.map(title =>
-                <tr>
-                  <td className="table__cell title">{title}:</td> <td className="table__cell desc">{item[title]}</td>
+                <tr key={title}>
+                  <td className="table__cell title">{title}:</td>
+                  <td className="table__cell desc">{item[title]}</td>
                 </tr>
               )}
             </tbody>  
