@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 
 ReactDOM.render(
-  <BrowserRouter basename='/starwarspi-react/'>
+  <BrowserRouter basename='/starwarsapi-react/'>
     <App />
   </BrowserRouter>
   , document.getElementById('root')
