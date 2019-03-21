@@ -120,7 +120,15 @@
   }
 }
 
-.table {
+.viewer-wrapper {
+  width: 75%;
+  padding-bottom: 5%; 
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.viewer-table {
   margin-left: 5%;
 
   &__title {
@@ -130,6 +138,34 @@
   &__cell {
     padding: 5px;
     text-align: start;
+    vertical-align: top;
+  }
+
+  &__cell>ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__cell>ul>li {
+    list-style: none;
+  }
+
+  &__cell>a {
+    color: #008cff;
+    text-decoration: none;
+  }
+
+  &__cell>a:hover  {
+    color: red;
+  }
+
+  &__cell>ul>li>a {
+    color: #008cff;
+    text-decoration: none;
+  }
+
+  &__cell>ul>li>a:hover  {
+    color: red;
   }
 }
 

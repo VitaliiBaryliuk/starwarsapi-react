@@ -2,28 +2,31 @@ import React, {Component} from 'react'
 
 import {Link} from 'react-router-dom';
 import SwApi from '../api/SwApi'
+import Preloader from './Preloader'
  
 export default class HomePage extends Component {
   state = {
-    categories: []
+    categories: [],
+    isLoaded: false,
   }
 
   async componentDidMount() {
     const categories = await SwApi.getRootApiData()
     
     this.setState({
-      categories
+      categories,
+      isLoaded: true
     })
   }  
 
-
   render() {
-    const { categories } = this.state 
+    const { categories, isLoaded } = this.state 
     
     return(
-        <div className="home-page">
-        {!categories.toString() ? <div className="lds-ring"><div></div><div></div><div></div><div></div></div> :
-        Object.keys(categories).map(category =>
+      !isLoaded 
+      ? <Preloader /> 
+      : <div className="home-page">
+        {Object.keys(categories).map(category =>
           <div className='home-page__category-item' key={category}>
             <Link to={`/${category}`}>
               {category}

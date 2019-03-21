@@ -1,10 +1,20 @@
+import React from 'react'
+import {NavLink} from 'react-router-dom' 
+
 const columnConfig = {
   people: {
     name: {
       title: 'Name',
       isSortable: true,
       isSearchable: true,
-      link: '/people/:fieldName'
+
+      render: (id, innerText) => {
+        return(
+          <NavLink to={`/people/${id}`}>
+            {innerText}
+          </NavLink>
+        )
+      }
     },
     gender: {
       title: 'Gender',
@@ -29,7 +39,14 @@ const columnConfig = {
       title: 'Title',
       isSortable: true, 
       isSearchable: true,
-      link: '/people/:fieldName'
+      
+      render: (id, innerText) => {
+        return(
+          <NavLink to={`/films/${id}`}>
+            {innerText}
+          </NavLink>
+        )
+      }
     },
     episode_id: {
       title: 'Episode number',
@@ -54,7 +71,14 @@ const columnConfig = {
       title: 'Name',
       isSortable: true, 
       isSearchable: true,
-      link: '/people/:fieldName'
+      
+      render: (id, innerText) => {
+        return(
+          <NavLink to={`/starships/${id}`}>
+            {innerText}
+          </NavLink>
+        )
+      }
     },
     starship_class: {
       title: 'Ship class',
@@ -79,7 +103,14 @@ const columnConfig = {
       title: 'Name',
       isSortable: true, 
       isSearchable: true,
-      link: '/people/:fieldName'
+      
+      render: (id, innerText) => {
+        return(
+          <NavLink to={`/vehicles/${id}`}>
+            {innerText}
+          </NavLink>
+        )
+      }
     },
     model: {
       title: 'Model',
@@ -104,7 +135,14 @@ const columnConfig = {
       title: 'Name',
       isSortable: true, 
       isSearchable: true,
-      link: '/people/:fieldName'
+      
+      render: (id, innerText) => {
+        return(
+          <NavLink to={`/species/${id}`}>
+            {innerText}
+          </NavLink>
+        )
+      }
     },
     classification: {
       title: 'Classification',
@@ -129,7 +167,14 @@ const columnConfig = {
       title: 'Name',
       isSortable: true, 
       isSearchable: true,
-      link: '/people/:fieldName'
+      
+      render: (id, innerText) => {
+        return(
+          <NavLink to={`/planets/${id}`}>
+            {innerText}
+          </NavLink>
+        )
+      }
     },
     climate: {
       title: 'Climate',
