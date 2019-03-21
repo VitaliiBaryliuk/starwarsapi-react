@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 
 ReactDOM.render(
-  <HashRouter basename='/starwarsapi-react/'>
+  <HashRouter>
     <App />
   </HashRouter>
   , document.getElementById('root')
