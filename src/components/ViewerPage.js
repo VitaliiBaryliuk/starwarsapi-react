@@ -24,9 +24,7 @@ export default class ViewerPage extends React.Component {
   } 
   
   componentWillReceiveProps = (nextProps)=> {
-    if (nextProps.location.key !== this.props.location.key) {
-        window.location.reload()
-    }
+    window.location.reload()
   }
 
   render() {
