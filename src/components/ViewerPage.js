@@ -1,10 +1,13 @@
-import React, {Fragment} from 'react'
+import React from 'react'
+import {NavLink} from 'react-router-dom'
 
+import Preloader from './Preloader'
 import SwApi from '../api/SwApi'
 
 export default class ViewerPage extends React.Component {
   state = {
-    item: [],
+    item: {},
+    isLoaded: false,
     titles: [],
   }
   
@@ -15,27 +18,56 @@ export default class ViewerPage extends React.Component {
 
     this.setState({
       item,
+      isLoaded: true,
       titles: Object.keys(item)
     })
-  }  
+  } 
+  
+  componentWillReceiveProps = (nextProps)=> {
+    window.location.reload()
+  }
 
   render() {
-    const { item, titles } = this.state
+    const { item, isLoaded, titles } = this.state
 
     return ( 
-        <Fragment>
-          {!titles.length ? <div className="lds-ring"><div></div><div></div><div></div><div></div></div> :
-          <table className="table">
-            <tbody>
-              {titles.map(title =>
-                <tr key={title}>
-                  <td className="table__cell title">{title}:</td>
-                  <td className="table__cell desc">{item[title]}</td>
+      !isLoaded ? <Preloader />
+      : <div className="viewer-wrapper">
+        <table className="viewer-table">
+          <tbody>
+            {titles.map(title =>
+              Array.isArray(item[title])
+              ? <tr key={title}>
+                  <td className="viewer-table__cell title">{title}:</td>
+                  <td className="viewer-table__cell desc">
+                    <ul>
+                      {item[title].map(link =>
+                        <li key={link}>
+                          <NavLink to={link.match(/[https://swapi.co/api/]\w+\/[0-9]+/gm)[0]}>
+                            {link}
+                          </NavLink> 
+                        </li>   
+                      )}
+                    </ul> 
+                  </td>
                 </tr>
-              )}
-            </tbody>  
-          </table>}
-        </Fragment>  
+              : typeof item[title] === 'string' && item[title].includes('http')
+              ? <tr key={title}>
+                <td className="viewer-table__cell title">{title}:</td>
+                <td className="viewer-table__cell desc">
+                  <NavLink to={item[title].match(/[https://swapi.co/api/]\w+\/[0-9]+/gm)[0]}>  
+                    {item[title]}
+                  </NavLink> 
+                </td>
+              </tr>
+              : <tr key={title}>
+                <td className="viewer-table__cell title">{title}:</td>
+                <td className="viewer-table__cell desc">{item[title]}</td>
+              </tr>
+            )}
+          </tbody>  
+        </table>
+      </div>  
     )
   }
 }

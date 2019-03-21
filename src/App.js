@@ -1,13 +1,12 @@
 import React from 'react';
 import {Route, NavLink, Switch } from 'react-router-dom';
 
-import logo from './images/logo.png'
-import './App.css';
-import './index.css'
-import './index.scss'
 import HomePage from './components/HomePage'
 import ViewerPage from './components/ViewerPage'
 import DataTable from './components/DataTable/DataTable'
+
+import './index.scss'
+import logo from './images/logo.png'
 
 const allowedCategories = [
   'people', 'planets' ,'films', 'species', 'vehicles', 'starships'

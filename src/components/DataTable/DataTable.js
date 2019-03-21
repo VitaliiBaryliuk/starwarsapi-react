@@ -1,14 +1,15 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
 
 import SwApi from '../../api/SwApi'
 import columnConfig from '../../api/columnConfig'
 import Pagination from './Pagination'
+import Preloader from '../Preloader'
 import Utils from '../utils'
 
 export default class DataTable extends React.Component {
   state = {
     list: [],
+    isLoaded: false,
     sortAsc: true,
     sortColumn: null,
     columnConfig: {},
@@ -23,6 +24,7 @@ export default class DataTable extends React.Component {
 
     this.setState({
       list: list.results,
+      isLoaded: true,
       keyValue: Object.keys(list.results[0])[0],
       columnConfig: columnConfig[category]
     })
@@ -88,7 +90,16 @@ export default class DataTable extends React.Component {
   }
 
   render() {
-    const { list, columnConfig, sortAsc, sortColumn, page, perPage, query} = this.state
+    const { 
+      list,
+      columnConfig,
+      sortAsc,
+      sortColumn,
+      page,
+      perPage,
+      query,
+      isLoaded
+    } = this.state
 
     const sortedList = this.listSort({
       list,
@@ -108,8 +119,8 @@ export default class DataTable extends React.Component {
     })
 
     return ( 
-      !list.length ? <div className="lds-ring"><div></div><div></div><div></div><div></div></div> :
-      <React.Fragment>
+      !isLoaded ? <Preloader />
+      : <React.Fragment>
         <div className='filters'>
           <input 
             type='text' 
@@ -134,10 +145,8 @@ export default class DataTable extends React.Component {
               <tr key={index}>
                 {Object.entries(columnConfig).map(([key, itemValue ], index) =>
                   <td className="data-table__item" key={`${item[key]}${index}`} >
-                    {itemValue.link ? 
-                      <NavLink to={`/people/${item.url.match(/[0-9]+/)}`}>
-                        {item[key]}
-                      </NavLink> 
+                    {itemValue.render 
+                      ? itemValue.render(item.url.match(/[0-9]+/), item[key])
                       : item[key]}
                   </td>
                 )}
