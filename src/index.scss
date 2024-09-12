@@ -1,0 +1,265 @@
+@font-face {
+  font-family: STARWARS;
+  src: url('fonts/STARWARS.woff'); 
+}
+
+#root {
+  padding-bottom: 5%; 
+  background-image: url('images/background.png'); 
+  min-height: 700px;
+  color: #EED256;
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header {
+  &__logo {
+    width: 25%;
+    margin-top: 3%;
+  }
+}
+
+.home-page {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+
+  &__category-item {
+    width: 10%;
+    margin: 7%;
+  }
+
+  &__category-item>a {
+    padding: 25px;
+    background-color: #090401;
+    border: 2px solid #EED256;
+    border-radius: 10px;
+    text-transform: uppercase;
+    color: #EED256;
+    text-decoration: none;
+    font-family: STARWARS
+  }
+
+  &__category-item>a:hover {
+    color: red;
+    border: 2px solid red;
+  }
+}
+
+.data-table {
+  width: 75%; 
+
+  &__title {
+    list-style: none;
+    text-transform: uppercase;
+    font-family: STARWARS;
+    text-decoration: none;
+    margin-bottom: 5px;  
+    color: greenyellow; 
+    cursor: pointer;
+  }
+  
+  &__item {
+    list-style: none;
+    text-transform: uppercase;
+    font-family: STARWARS;
+    text-decoration: none;
+    margin-bottom: 5px;
+  }
+
+  &__item>a  {
+    color: #008cff;
+    text-decoration: none;
+  }
+
+  &__item>a:hover  {
+    color: red;
+  }
+}
+
+.data-table>tbody {
+  width: 100%;
+}
+
+.pagination {
+  margin-top: 25px;
+
+  &__button {
+    margin: 5px;
+    padding: 5px;
+    background-color: greenyellow;
+    color: #008cff;
+    font-family: STARWARS 
+  }
+}
+
+.filters {
+  margin-bottom: 50px; 
+
+  &__search-input {
+    width: 250px;
+    height: 30px;
+    padding: 3px;
+    font-size: 18px;
+    background-color: #090401;
+    border: 3px solid #EED256; 
+    border-radius: 10px;
+    color: #EED256;
+  }
+
+  &__search-input:focus {
+    outline: none;
+  }
+}
+
+.viewer-wrapper {
+  width: 75%;
+  padding-bottom: 5%; 
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.viewer-table {
+  margin-left: 5%;
+
+  &__title {
+    margin: 25px;
+  }
+
+  &__cell {
+    padding: 5px;
+    text-align: start;
+    vertical-align: top;
+  }
+
+  &__cell>ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__cell>ul>li {
+    list-style: none;
+  }
+
+  &__cell>a {
+    color: #008cff;
+    text-decoration: none;
+  }
+
+  &__cell>a:hover  {
+    color: red;
+  }
+
+  &__cell>ul>li>a {
+    color: #008cff;
+    text-decoration: none;
+  }
+
+  &__cell>ul>li>a:hover  {
+    color: red;
+  }
+}
+
+.title {
+  color: greenyellow;
+}
+
+
+/* Base CSS from index.css */ 
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid #EED256;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #EED256 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* Base CSS from App.css */
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
